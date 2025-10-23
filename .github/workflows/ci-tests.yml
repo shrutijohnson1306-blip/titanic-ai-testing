@@ -27,3 +27,16 @@ jobs:
       - name: Run tests with pytest
         run: |
           pytest -v --disable-warnings
+
+# 🚀 CD Step: Only run if tests pass
+      - name: Train and save model
+        if: success()   # only runs if tests passed
+        run: python src/model_training.py
+
+      # (Optional) Upload model as an artifact
+      - name: Upload model artifact
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: titanic_model
+          path: artifacts/titanic_model.pkl
