@@ -36,7 +36,8 @@ jobs:
       # (Optional) Upload model as an artifact
       - name: Upload model artifact
         if: success()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
+
         with:
           name: titanic_model
           path: artifacts/titanic_model.pkl
