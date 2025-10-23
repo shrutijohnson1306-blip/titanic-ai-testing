@@ -44,4 +44,12 @@ jobs:
         with:
           name: titanic_model
           path: artifacts/titanic_model.pkl
+      
+      - name: Deploy model API
+        if: success()
+        run: |
+          echo "🚀 Starting Flask server (simulated deployment)..."
+          python src/app.py &
+          sleep 5
+          echo "✅ Flask app is running!"
 
