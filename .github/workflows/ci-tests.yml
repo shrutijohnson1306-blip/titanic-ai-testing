@@ -26,9 +26,8 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pytest -v --disable-warnings || true  # Continue even if tests fail
+          pytest -v --disable-warnings || true  # continue even if tests fail
 
-      # 🚀 CD Step: Only run if tests pass
       - name: Train and save model
         if: success()
         run: |
@@ -58,4 +57,5 @@ EOF
         with:
           name: titanic_model
           path: artifacts/titanic_model.pkl
+
 
